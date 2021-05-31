@@ -23,6 +23,6 @@ Dummy script that uses pandas to load and process the data from a text file into
 
 You can see the battery level dropping to 0% from about 50% around 20h.
 
-![Cycle2](/plots/cycle-4.png)
+![Cycle4](/plots/cycle-4.png)
 
 Haven't seen that happening after upgrading the bios, but I still see random spikes to 100% battery level.

@@ -62,6 +62,28 @@ def detach_cycles(df):
     return res
 
 
+def pretty_plot(i, c):
+    fig, axs = plt.subplots(4, figsize=(12, 9), sharex=True)
+
+    fig.suptitle(f'Cycle {i + 1} from {min(c["timestamp"])} to {max(c["timestamp"])}')
+    
+    axs[0].plot(c["timestamp"], c["percentage"])
+    axs[0].set(ylabel="Battery %")
+    axs[1].plot(c["timestamp"], c["time-left"], "tab:green")
+    axs[1].set(ylabel="Hours left")
+    axs[2].plot(c["timestamp"], c["voltage"], "tab:red")
+    axs[2].set(ylabel="Volts")
+    axs[3].plot(c["timestamp"], c["energy-rate"], "tab:purple")
+    axs[3].set(ylabel="Rate in Watts", xlabel="Time")
+
+    for ax in fig.get_axes():
+        ax.label_outer()
+        ax.grid()
+        
+    fig.tight_layout()
+    plt.savefig(f"{CURRENT_DIR}/cycle-{i + 1}.png")
+
+
 def main():
     data = load_data("/home/pedro/battery-level.data")
 
@@ -69,27 +91,8 @@ def main():
     cycles = detach_cycles(df)
 
     for i, c in enumerate(cycles):
-        fig, axs = plt.subplots(4, figsize=(12, 9), sharex=True)
-
-        fig.suptitle(f'Cycle {i + 1} from {min(c["timestamp"])} to {max(c["timestamp"])}')
-        
-        axs[0].plot(c["timestamp"], c["percentage"])
-        axs[0].set(ylabel="Battery %")
-        axs[1].plot(c["timestamp"], c["time-left"], "tab:green")
-        axs[1].set(ylabel="Hours left")
-        axs[2].plot(c["timestamp"], c["voltage"], "tab:red")
-        axs[2].set(ylabel="Volts")
-        axs[3].plot(c["timestamp"], c["energy-rate"], "tab:purple")
-        axs[3].set(ylabel="Rate in Watts", xlabel="Time")
-
-        for ax in fig.get_axes():
-            ax.label_outer()
-            ax.grid()
-
-        fig.tight_layout()
-        plt.savefig(f"{CURRENT_DIR}/cycle-{i + 1}.png")
+        pretty_plot(i, c)
 
 
 if __name__ == "__main__":
     main()
-
