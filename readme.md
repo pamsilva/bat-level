@@ -19,11 +19,10 @@ To log the battery usage a few more details.
 
 Dummy script that uses pandas to load and process the data from a text file into the different cycles; and matplotlib to plot the result. You'll need to edit the script to update any paths that need to match your own system.
 
-![Cycle2](/images/cycle-2.png)
+![Cycle2](/plots/cycle-2.png)
 
 You can see the battery level dropping to 0% from about 50% around 20h.
 
-![Cycle2](/images/cycle-4.png)
+![Cycle2](/plots/cycle-4.png)
 
 Haven't seen that happening after upgrading the bios, but I still see random spikes to 100% battery level.
-
