@@ -83,7 +83,7 @@ def pretty_plot(i, c):
         ax.grid()
         
     fig.tight_layout()
-    plt.savefig(f"{CURRENT_DIR}/cycle-{i + 1}.png")
+    plt.savefig(f"{CURRENT_DIR}/plots/cycle-{i + 1}.png")
 
 
 def main():
