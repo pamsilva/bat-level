@@ -22,6 +22,8 @@ def stupid_time_delta_parser(string_value):
         res = value
     elif delta_type == "minutes":
         res = value / 60
+    elif delta_type == "seconds":
+        res = value / 60 / 60
     else:
         raise ValueError(f"Don't know how to parse {string_value}")
 
